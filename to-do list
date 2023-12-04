@@ -1,0 +1,17 @@
+def add_task(task):
+    with open("tasks.txt", "a") as file:
+        file.write(task + "\n")
+def display_tasks():
+    try:
+        with open("tasks.txt", "r") as file:
+            tasks = file.readlines()
+            if not tasks:
+                print("No tasks found.")
+            else:
+                for idx, task in enumerate(tasks, 1):
+                    print(f"{idx}. {task.strip()}")
+    except FileNotFoundError:
+        print("No tasks found.")
+add_task("Complete project")
+add_task("Read a book")
+display_tasks()
